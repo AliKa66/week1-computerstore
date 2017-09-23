@@ -93,7 +93,7 @@ public class ComputerSystem implements Computable {
 		}
 		return "Computercase:\n" + computerCase.toString() + "Processor:\n" + processor.toString()
 				+ peripherals.toString()
-				+ String.format("TOTAAL EXCL.: %.2f\n" + "TOTAAL INCL:. %.2f\n", totalPriceExcl(), totalPriceIncl());
+				+ String.format("TOTAAL EXCL.: %.2f\n" + "TOTAAL INCL.: %.2f\n", totalPriceExcl(), totalPriceIncl());
 	}
 
 }

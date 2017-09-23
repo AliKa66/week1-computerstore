@@ -1,7 +1,6 @@
 package be.pxl.computerstore;
 
 import java.util.Scanner;
-
 import be.pxl.computerstore.data.Warehouse;
 import be.pxl.computerstore.hardware.ComputerCase;
 import be.pxl.computerstore.hardware.ComputerComponent;
@@ -35,7 +34,8 @@ public class ComputerSystemConfigurator {
 			}
 		}
 		boolean choosePeripheral = true;
-
+		
+		try{
 		do {
 			System.out.println("Kies een randapparaat (geef artikelnummer): ");
 			displayPeripherals();
@@ -47,10 +47,14 @@ public class ComputerSystemConfigurator {
 			System.out.println("Wil u nog een randaparaat toevoegen (j/n)?");
 			choosePeripheral = keyboard.nextLine().equals("j");
 		} while(choosePeripheral);
-		// TODO catch TooManyPeripheralsException
-		System.out.println("De door u gekozen computer:");
-		System.out.println(computerSystem);
-		keyboard.close();
+		}catch(TooManyPeripheralsException ex){
+			System.out.println("Kan geen randaparaat meer toevoegen.");
+		}finally{
+			// TODO catch TooManyPeripheralsException
+			System.out.println("De door u gekozen computer:");
+			System.out.println(computerSystem);
+			keyboard.close();
+		}
 	}
 
 	public static void displayComputerCases() {
@@ -85,6 +89,4 @@ public class ComputerSystemConfigurator {
 		}
 		return null;
 	}
-
-	
 }
