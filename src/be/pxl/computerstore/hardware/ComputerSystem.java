@@ -1,8 +1,9 @@
 package be.pxl.computerstore.hardware;
 
+import be.pxl.computerstore.util.Computable;
 import be.pxl.computerstore.util.TooManyPeripheralsException;
 
-public class ComputerSystem {
+public class ComputerSystem implements Computable {
 
 	private Processor processor;
 	private ComputerCase computerCase;
@@ -60,6 +61,23 @@ public class ComputerSystem {
 
 	public Peripheral[] getPeripherals() {
 		return peripherals;
+	}
+
+	@Override
+	public double totalPriceExcl() {
+		double priceProcessor = processor.getPrice();
+		double priceCase = computerCase.getPrice();
+		double pricePeripherals = 0;
+		
+		if(amountAddedPeripherals >= 0){
+			for (Peripheral peripheral : peripherals) {
+				if(peripheral != null){
+					pricePeripherals += peripheral.getPrice();
+				}
+			}
+		}
+		
+		return priceProcessor + priceCase + pricePeripherals;
 	}
 
 }
