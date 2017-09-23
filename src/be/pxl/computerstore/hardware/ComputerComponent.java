@@ -57,6 +57,10 @@ abstract class ComputerComponent {
 		return articleNumber;
 	}
 	
+	public String getShortDescription(){
+			return getArticleNumber() + " * " + getName() + " * " + getPrice() + "€";
+	}
+	
 	@Override
 	public String toString(){
 		return "ArticleNumber = " + getArticleNumber() + "\n"
