@@ -57,6 +57,11 @@ public class ComputerComponent {
 		return articleNumber;
 	}
 	
-	
-
+	@Override
+	public String toString(){
+		return "ArticleNumber = " + getArticleNumber() + "\n"
+				+ "Vendor = " + getVendor() + "\n"
+				+ "Name = " + getName() + "\n"
+				+ "Price = " + getPrice() + "\n";
+	}
 }

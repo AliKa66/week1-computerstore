@@ -21,4 +21,10 @@ public class Processor extends ComputerComponent{
 			this.clockspeed = clockspeed;
 		}
 	}
+	
+	@Override
+	public String toString(){
+		return super.toString()
+				+ "Clock speed = " + getClockspeed() + "GHz\n";
+	}
 }
