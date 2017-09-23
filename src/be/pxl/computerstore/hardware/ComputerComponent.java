@@ -2,7 +2,7 @@ package be.pxl.computerstore.hardware;
 
 import java.util.Random;
 
-abstract class ComputerComponent {
+public class ComputerComponent {
 
 	private String vendor;
 	private String name;
@@ -11,10 +11,10 @@ abstract class ComputerComponent {
 	private static Random rand;
 	private static int amountComponents;
 
-	static{
+	static {
 		rand = new Random();
 	}
-	
+
 	public ComputerComponent(String vendor, String name, double price) {
 		this.vendor = vendor;
 		this.name = name;
@@ -25,19 +25,18 @@ abstract class ComputerComponent {
 
 	private void generateArticleNumber() {
 		String serial1 = vendor;
-		
-		if(serial1.length() < 3){
-			while(serial1.length() < 3){
+
+		if (serial1.length() < 3) {
+			while (serial1.length() < 3) {
 				serial1 = serial1.concat("X").toUpperCase();
 			}
-		}else{
+		} else {
 			serial1 = serial1.substring(0, 3).toUpperCase();
 		}
-		
+
 		String serial2 = String.format("%05d", amountComponents);
-		String serial3 = (rand.nextInt(8) + 1) + "" 
-		+ (rand.nextInt(8) + 1) + "" + (rand.nextInt(8) + 1);
-		
+		String serial3 = (rand.nextInt(8) + 1) + "" + (rand.nextInt(8) + 1) + "" + (rand.nextInt(8) + 1);
+
 		articleNumber = serial1 + "-" + serial2 + "-" + serial3;
 	}
 
@@ -56,16 +55,14 @@ abstract class ComputerComponent {
 	public String getArticleNumber() {
 		return articleNumber;
 	}
-	
-	public String getShortDescription(){
-			return getArticleNumber() + " * " + getName() + " * " + getPrice() + "€";
+
+	public String getShortDescription() {
+		return getArticleNumber() + " * " + getName() + " * " + getPrice() + "€";
 	}
-	
+
 	@Override
-	public String toString(){
-		return "ArticleNumber = " + getArticleNumber() + "\n"
-				+ "Vendor = " + getVendor() + "\n"
-				+ "Name = " + getName() + "\n"
-				+ "Price = " + getPrice() + "\n";
+	public String toString() {
+		return "ArticleNumber = " + getArticleNumber() + "\n" + "Vendor = " + getVendor() + "\n" + "Name = " + getName()
+				+ "\n" + "Price = " + getPrice() + "\n";
 	}
 }

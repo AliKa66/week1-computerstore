@@ -1,6 +1,6 @@
 package be.pxl.computerstore.hardware;
 
-public class Processor extends ComputerComponent{
+public class Processor extends ComputerComponent {
 
 	private double clockspeed;
 	private static final double MIN_CLOCKSPEED = 0.7;
@@ -21,10 +21,9 @@ public class Processor extends ComputerComponent{
 			this.clockspeed = clockspeed;
 		}
 	}
-	
+
 	@Override
-	public String toString(){
-		return super.toString()
-				+ "Clock speed = " + getClockspeed() + "GHz\n";
+	public String toString() {
+		return super.toString() + "Clock speed = " + getClockspeed() + "GHz\n";
 	}
 }

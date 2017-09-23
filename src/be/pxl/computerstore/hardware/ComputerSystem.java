@@ -1,0 +1,65 @@
+package be.pxl.computerstore.hardware;
+
+import be.pxl.computerstore.util.TooManyPeripheralsException;
+
+public class ComputerSystem {
+
+	private Processor processor;
+	private ComputerCase computerCase;
+	private Peripheral[] peripherals;
+	private int amountAddedPeripherals;
+	public static final int MAX_PERIPHERAL = 3;
+
+	public ComputerSystem() {
+		peripherals = new Peripheral[MAX_PERIPHERAL];
+
+	}
+
+	public Processor getProcessor() {
+		return processor;
+	}
+
+	public void setProcessor(Processor processor) {
+		this.processor = processor;
+	}
+
+	public ComputerCase getComputerCase() {
+		return computerCase;
+	}
+
+	public void setComputerCase(ComputerCase computerCase) {
+		this.computerCase = computerCase;
+	}
+
+	public int getNumberOfPeripherals() {
+		return amountAddedPeripherals;
+	}
+
+	public void addPeripheral(Peripheral peripheral) throws TooManyPeripheralsException {
+		if (getNumberOfPeripherals() >= MAX_PERIPHERAL) {
+			throw new TooManyPeripheralsException("Added too many peripherals.");
+		}
+		int emptyIndex = 0;
+		while (this.peripherals[emptyIndex] != null) {
+			emptyIndex++;
+		}
+		this.peripherals[emptyIndex] = peripheral;
+		amountAddedPeripherals++;
+	}
+
+	public void removePeripheral(String articleNumber) {
+		boolean peripheralFound = false;
+		for (int index = 0; index < amountAddedPeripherals && peripheralFound == false; index++) {
+			if (peripherals[index].getArticleNumber().equals(articleNumber)) {
+				peripherals[index] = null;
+				peripheralFound = true;
+				amountAddedPeripherals--;
+			}
+		}
+	}
+
+	public Peripheral[] getPeripherals() {
+		return peripherals;
+	}
+
+}

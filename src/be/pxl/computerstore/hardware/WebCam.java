@@ -7,7 +7,7 @@ public class WebCam extends Peripheral {
 	}
 
 	@Override
-	public String getShortDescription(){
+	public String getShortDescription() {
 		return getArticleNumber() + " * WebCam * " + getName() + " * " + getPrice() + "€";
-}
+	}
 }

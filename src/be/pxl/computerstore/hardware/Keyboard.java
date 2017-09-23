@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Keyboard extends Peripheral {
 
 	private String keyboardLayout;
+
 	private final String[] ALLOWED_KEYBOARD_LAYOUT = { "QWERTY", "AZERTY" };
 
 	public Keyboard(String vendor, String name, double price, String keyboardLayout) {
@@ -20,8 +21,8 @@ public class Keyboard extends Peripheral {
 		} else {
 			Scanner keyboard = new Scanner(System.in);
 			String input = "";
-			while(input.toUpperCase().equals(ALLOWED_KEYBOARD_LAYOUT[0]) ||
-					input.toUpperCase().equals(ALLOWED_KEYBOARD_LAYOUT[1])){
+			while (input.toUpperCase().equals(ALLOWED_KEYBOARD_LAYOUT[0])
+					|| input.toUpperCase().equals(ALLOWED_KEYBOARD_LAYOUT[1])) {
 				System.out.println("Kies het juiste layout voor uw toetsenbord(QWERTY of AZERTY):");
 				input = keyboard.nextLine();
 			}
@@ -29,10 +30,14 @@ public class Keyboard extends Peripheral {
 			keyboard.close();
 		}
 	}
+
+	public String getKeyboardLayout() {
+		return keyboardLayout;
+	}
 	
 	@Override
-	public String getShortDescription(){
+	public String getShortDescription() {
 		return getArticleNumber() + " * Keyboard * " + getName() + " * " + getPrice() + "€";
-}
+	}
 
 }
