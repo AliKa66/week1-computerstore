@@ -2,7 +2,7 @@ package be.pxl.computerstore.hardware;
 
 import java.util.Random;
 
-public class ComputerComponent {
+abstract class ComputerComponent {
 
 	private String vendor;
 	private String name;
