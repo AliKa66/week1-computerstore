@@ -68,16 +68,32 @@ public class ComputerSystem implements Computable {
 		double priceProcessor = processor.getPrice();
 		double priceCase = computerCase.getPrice();
 		double pricePeripherals = 0;
-		
-		if(amountAddedPeripherals >= 0){
+
+		if (amountAddedPeripherals >= 0) {
 			for (Peripheral peripheral : peripherals) {
-				if(peripheral != null){
+				if (peripheral != null) {
 					pricePeripherals += peripheral.getPrice();
 				}
 			}
 		}
-		
+
 		return priceProcessor + priceCase + pricePeripherals;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder peripherals = new StringBuilder();
+		int numberPerihperal = 1;
+		for (Peripheral peripheral : this.peripherals) {
+			if (peripheral != null) {
+				peripherals.append(String.format("Randapparaat %d:\n", numberPerihperal));
+				peripherals.append(peripheral.toString());
+				numberPerihperal++;
+			}
+		}
+		return "Computercase:\n" + computerCase.toString() + "Processor:\n" + processor.toString()
+				+ peripherals.toString()
+				+ String.format("TOTAAL EXCL.: %.2f\n" + "TOTAAL INCL:. %.2f\n", totalPriceExcl(), totalPriceIncl());
 	}
 
 }
