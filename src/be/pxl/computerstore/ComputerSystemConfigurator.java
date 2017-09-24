@@ -48,7 +48,7 @@ public class ComputerSystemConfigurator {
 			choosePeripheral = keyboard.nextLine().equals("j");
 		} while(choosePeripheral);
 		}catch(TooManyPeripheralsException ex){
-			System.out.println("Kan geen randaparaat meer toevoegen.");
+			System.out.println("Kan geen randapparaat meer toevoegen.");
 		}finally{
 			// TODO catch TooManyPeripheralsException
 			System.out.println("De door u gekozen computer:");
